@@ -2,72 +2,161 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/input.css">
-  <link rel="stylesheet" href="./styles/output.css">
-  <!-- <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet"> -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/input.css" />
+  <link rel="stylesheet" href="./styles/output.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:opsz,wght@14..32,300&family=Oxanium:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Roboto+Mono:wght@300&family=Strait&family=Work+Sans:wght@100..900&display=swap"
+    rel="stylesheet">
   <script defer src="./script/script.js"></script>
   <title>Auto Wrap Studio</title>
 </head>
 
-<body>
-  <header class="px-36 sticky top-0 py-6 bg-slate-100">
-    <img class="rounded-lg" src="https://dummyimage.com/160x80/000/d9ed66" alt="dummy image">
+<body class="bg-main-color">
+  <header class="z-50	px-10 py-3 sticky top-0 bg-white">
+    <nav class="flex place-items-center">
+      <!-- Auto Wrap Studio Logo -->
+      <div class="flex-[1]">
+        <img class="rounded-lg w-[120px] h-[50px]" src="https://dummyimage.com/120x50/000/d9ed66" alt="dummy image" />
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex flex-[2] gap-12 place-content-center font-oxanium font-medium text-lg">
+        <p
+          class="inline-block relative before:content-[''] before:w-2/4 before:absolute before:left-1/4 before:bottom-[-3px] before:border-b before:border-border-main">
+          Services</p>
+        <p>Our Work</p>
+        <p>Visit Us</p>
+      </div>
+
+      <!-- Social Media Icons -->
+      <div class="flex grow gap-4 flex-1 place-content-end">
+        <!-- Instagram -->
+        <button type="button"
+          class="ig-button p-2.5 border border-border-main rounded-md shadow-lg shadow-gray-300 hover:shadow-gray-400 hover:border-aws-yellow hover:bg-amber-50">
+          <img id="ig-img" class="w-4	h-4" src="./assets/icons/insta/insta_initial.svg" alt="Instagram">
+        </button>
+
+        <!-- Facebook -->
+        <button type="button"
+          class="fb-button p-2.5 border border-border-main rounded-md shadow-lg shadow-gray-300 hover:shadow-gray-400 hover:border-aws-yellow hover:bg-amber-50">
+          <img id="fb-img" class="w-4 h-4" src="./assets/icons/fb/fb_initial.svg" alt="Facebook">
+        </button>
+
+        <!-- Tiktok -->
+        <button type="button"
+          class="tiktok-button p-2.5 border border-border-main rounded-md shadow-lg shadow-gray-300 hover:shadow-gray-400 hover:border-aws-yellow hover:bg-amber-50">
+          <img id="tiktok-img" class="w-4 h-4" src="./assets/icons/tiktok/tiktok_initial.svg" alt="Tiktok">
+        </button>
+
+        <!-- WhatsApp -->
+        <button class="whatsapp-button flex items-center gap-3 px-5 bg-black rounded-lg">
+          <p class="text-white text-base">Contact Us</p>
+          <img id="whatsapp-img" class="w-4 h-4" src="./assets/icons/whatsapp/whatsapp_initial.svg" alt="WhatsApp">
+        </button>
+      </div>
+    </nav>
   </header>
-  <main class="w-full px-36">
-    <!-- Photos -->
-    <section class="my-4">
-      <img class="w-full rounded-lg" src="https://dummyimage.com/1600x600/000/d9ed66" alt="dummy image">
+  <!-- TODO: FIX UP THIS -->
+  <div class="h-svh flex flex-col">
+    <!-- Carousel Photos -->
+    <section class="carousel-slider w-full overflow-hidden">
+      <!-- <img class="h-full w-full object-fill" src="assets/dummy/carousel_1.png" alt="dummy image" /> -->
+      <img class="h-full w-full object-fill" src="assets/dummy/carousel_test1.png" alt="dummy image" />
+      <a class="prev text-6xl text-white absolute top-1/2 ml-3 cursor-pointer select-none"
+        onclick="plusSlides(-1)">❮</a>
+      <a class="next text-6xl text-white absolute top-1/2 mr-3 cursor-pointer select-none right-0"
+        onclick="plusSlides(1)">❯</a>
+      <div class="absolute bottom-3 flex gap-12 w-full justify-center items-end">
+        <span class="h-1.5 w-40 bg-aws-yellow" onclick="currentSlide(1)"></span>
+        <span class="h-1 w-40	bg-white" onclick="currentSlide(2)"></span>
+        <span class="h-1 w-40	bg-white" onclick="currentSlide(3)"></span>
+      </div>
     </section>
-    <!-- Service -->
+  </div>
+
+  <main class="w-full">
+    <!-- Services -->
+    <section>
+      <div class="max-w-fit mx-auto flex flex-col items-center">
+        <img class="w-9 h-9" src="./assets/icons/work_tool.svg" alt="Services">
+        <p
+          class="mt-3 font-medium text-7xl font-work-sans inline-block relative before:content-[''] before:w-2/4 before:absolute before:left-1/4 before:bottom-[-16px] before:border-b-[3px] before:border-aws-yellow">
+          Services.</p>
+        <p class="mt-10 text-center	font-inter text-sm">
+          We offer expert PPF installation, premium car wraps, and custom designs to<br>enhance and protect your
+          vehicle's style.<br>
+          Transform your ride with our top-notch services!
+        </p>
+      </div>
+    </section>
+    <br>
+
+    <br>
+    <div class="my-4 flex gap-12 min-h-80 px-16">
+      <!-- PPF Installation -->
+      <div class="grow basis-0 shadow-lg relative rounded-2xl overflow-hidden">
+        <img class="object-cover h-full" src="assets/dummy/services1.png" alt="dummy image" />
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="absolute top-[7.5%] left-5">
+          <p class="text-white text-[42px] font-bebasnue">PPF Installation</p>
+          <p class="text-white text-left font-pixelify text-sm">
+            PPF installation protects against scratches and UV damage, keeping your car looking new while simplifying
+            maintenance.!
+          </p>
+        </div>
+      </div>
+
+      <div class="grow-[1.5] basis-0 shadow-lg relative rounded-2xl overflow-hidden bg-no-repeat bg-center bg-cover"
+        style="background-image: url(assets/dummy/services2.png);">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <p class="absolute text-white text-[42px] font-bebasnue top-[7.5%] left-5">Car Wrap</p>
+      </div>
+
+      <!-- Custom Wrap Design -->
+      <div class="grow basis-0 flex justify-center items-center shadow-lg rounded-2xl">
+        PFP Installation
+      </div>
+    </div>
     <section class="my-4">
       <p class="text-center font-semibold text-2xl">Our Services</p>
       <div class="my-4 flex gap-12 h-48">
         <!-- Car Tinted Photo -->
-        <div class="service-card">
-          <p>
-            Car Tinted Photo
-          </p>
+        <div class="flex-1 flex justify-center items-center rounded-md shadow-lg hover:shadow-2xl">
+          <p>Car Tinted Photo</p>
         </div>
 
         <!-- Car Wrap< -->
-        <div class="service-card">Car Wrap</div>
+        <div class="flex-1 flex justify-center items-center rounded-md shadow-lg hover:shadow-2xl">
+          Car Wrap
+        </div>
 
         <!-- PFP Installation -->
-        <div class="service-card">PFP Installation</div>
+        <div class="flex-1 flex justify-center items-center rounded-md shadow-lg hover:shadow-2xl">
+          PFP Installation
+        </div>
       </div>
     </section>
   </main>
+
   <footer class="mt-12 pt-16 pb-10 bg-slate-100 px-36 flex justify-between">
     <div>
       <div class="flex items-center">
-        <img class="rounded-lg" src="https://dummyimage.com/60x60/000000/fff" alt="company logo">
+        <img class="rounded-lg" src="https://dummyimage.com/60x60/000000/fff" alt="company logo" />
         <p class="mx-6 text-3xl font-semibold italic">Auto Wrap Studio</p>
       </div>
-      <p class="tracking-wide my-6">Vinyl wrapping, PPF installation specialist.</p>
-      <div class="flex my-4">
-        <ul class="flex gap-3 items-center">
-          <p class="tracking-wide">Follow us on</p>
-          <li class="border border-zinc-950 p-2 rounded-full">
-            <a href="https://www.instagram.com/auto_wrap_studio" target="_blank">
-              <img class="h-5" src="./assets/icons/instagram.svg" alt="Auto Wrap Studio Instagram account"></a>
-          </li>
-          <li class="border border-zinc-950 p-2 rounded-full">
-            <a href="https://www.facebook.com/people/Auto-Wrap-Studio/100077070781086/" target="_blank">
-              <img class="h-5" src="./assets/icons/facebook.svg" alt="Auto Wrap Studio Facebook account"></a>
-          </li>
-          <li class="border border-zinc-950 p-2 rounded-full">
-            <a href="https://www.tiktok.com/@autowrapstudio99" target="_blank">
-              <img class="h-5" src="./assets/icons/tiktok.svg" alt="Auto Wrap Studio Tiktok account"></a>
-          </li>
-        </ul>
-      </div>
+      <p class="tracking-wide my-6">
+        Vinyl wrapping, PPF installation specialist.
+      </p>
+
     </div>
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1018678.3031283005!2d101.72254116016711!3d4.178661629962306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4b9b18419579%3A0x177872af0e41b0dc!2sAuto%20wrap%20studio!5e0!3m2!1sen!2smy!4v1698530853045!5m2!1sen!2smy"
-      width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+      width="600" height="300" style="border: 0" allowfullscreen="" loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"></iframe>
   </footer>
 </body>

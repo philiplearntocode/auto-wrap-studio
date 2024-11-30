@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+/* @layer components {
   .service-card {
     @apply flex-1 flex justify-center items-center rounded-md shadow-lg hover:shadow-2xl;
   }
-}
+} */
