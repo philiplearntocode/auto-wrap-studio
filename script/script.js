@@ -116,31 +116,52 @@ var servicesContent = document.getElementsByClassName('service-content');
 
 // Default serviceContent
 var selectedServiceContent = 1;
+var selectedPrevServiceContent = -1;
 
 // 0 -> right
 // 1 -> left & right
 // 2 -> left
 const animationStretchBehaviour = { 0: "Fiat", 1: "500", 2: "white" };
 
+
+showCurrentServiceContentEffect(selectedServiceContent);
+
 // all servicesContent, when hover to any, set the
 for (let i = 0; i < servicesContent.length; i++) {
-  // servicesContent[i].addEventListener('mouseover', (_) => {
-  //   // on hover on specific index
-  //   if (selectedServiceContent == i) return;
-  //   selectedServiceContent = i;
+  servicesContent[i].addEventListener('mouseover', (_) => {
+    // on hover on specific index
+    if (selectedServiceContent == i) return;
+    selectedPrevServiceContent = selectedServiceContent;
+    selectedServiceContent = i;
 
-  //   servicesContent[i];
-  //   // show text, darken bgOpacity, grow to 1.5, stretch depending on index
-  // });
+    showCurrentServiceContentEffect(i);
+  });
+}
 
-  console.log(`ServiceContent: ${i} ${servicesContent[i].children}`);
-  servicesContent[i].children;
-  for (let j = 0; j < servicesContent[i].children.length; j++) {
-    console.log(`ClassList: ${servicesContent[i].children[j].className}`);
-    console.log(`ClassList: ${servicesContent[i].children[j].classList.contains('display-text')}`);
+function showCurrentServiceContentEffect(currentIndex) {
+  servicesContent[currentIndex].classList.remove('grow');
+  servicesContent[currentIndex].classList.add('grow-[1.5]');
+
+  var blackBg = servicesContent[currentIndex].children[0];
+  blackBg.classList.remove('bg-opacity-20');
+  blackBg.classList.add('bg-opacity-30');
+
+  var textContent = servicesContent[currentIndex].children[1];
+  var textDisplay = textContent.children[1];
+  textDisplay.classList.remove('opacity-0');
+  textDisplay.classList.add('opacity-100');
+
+  if (selectedPrevServiceContent != -1) {
+    servicesContent[selectedPrevServiceContent].classList.remove('grow-[1.5]');
+    servicesContent[selectedPrevServiceContent].classList.add('grow');
+
+    var blackBgPrev = servicesContent[selectedPrevServiceContent].children[0];
+    blackBgPrev.classList.remove('bg-opacity-30');
+    blackBgPrev.classList.add('bg-opacity-20');
+
+    var textContentPrev = servicesContent[selectedPrevServiceContent].children[1];
+    var textDisplayPrev = textContentPrev.children[1];
+    textDisplayPrev.classList.remove('opacity-100');
+    textDisplayPrev.classList.add('opacity-0');
   }
-  // hide text, bright back bgOpacity, grow back to normal, restretch back
-
-
-  // servicesContent[i].addEventListener('mouseout')
 }
