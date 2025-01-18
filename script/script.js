@@ -56,38 +56,47 @@ visitUsBtn.addEventListener('click', (_) => {
   // TODO: navigate to visit us part
 });
 
-var igButton = document.getElementsByClassName('ig-button')[0];
-var fbButton = document.getElementsByClassName('fb-button')[0];
-var tiktokButton = document.getElementsByClassName('tiktok-button')[0];
+var igButton = document.getElementsByClassName('ig-button');
+var fbButton = document.getElementsByClassName('fb-button');
+var tiktokButton = document.getElementsByClassName('tiktok-button');
+var igImg = document.getElementsByClassName('ig-img');
+var fbImg = document.getElementsByClassName('fb-img');
+var tiktokImg = document.getElementsByClassName('tiktok-img');
+
 var whatsappButton = document.getElementsByClassName('whatsapp-button')[0];
-var igImg = document.getElementById('ig-img');
-var fbImg = document.getElementById('fb-img');
-var tiktokImg = document.getElementById('tiktok-img');
 var whatsappImg = document.getElementById('whatsapp-img');
 
-// Instagram
-igButton.addEventListener('mouseover', (_) => {
-  igImg.src = './assets/icons/insta/insta_hover.svg';
-});
-igButton.addEventListener('mouseout', (_) => {
-  igImg.src = './assets/icons/insta/insta_initial.svg';
-});
+function hoverChangeIcon(buttons, images, initialImg, hoverImg) {
+  Array.from(buttons).forEach((button, index) => {
+    button.addEventListener('mouseover', () => {
+      images[index].src = hoverImg;
+    });
+    button.addEventListener('mouseout', () => {
+      images[index].src = initialImg;
+    });
+  });
+}
 
-// Facebook
-fbButton.addEventListener('mouseover', (_) => {
-  fbImg.src = './assets/icons/fb/fb_hover.svg';
-});
-fbButton.addEventListener('mouseout', (_) => {
-  fbImg.src = './assets/icons/fb/fb_initial.svg';
-});
+hoverChangeIcon(
+  igButton,
+  igImg,
+  './assets/icons/insta/insta_initial.svg',
+  './assets/icons/insta/insta_hover.svg',
+);
 
-// Tiktok
-tiktokButton.addEventListener('mouseover', (_) => {
-  tiktokImg.src = './assets/icons/tiktok/tiktok_hover.svg';
-});
-tiktokButton.addEventListener('mouseout', (_) => {
-  tiktokImg.src = './assets/icons/tiktok/tiktok_initial.svg';
-});
+hoverChangeIcon(
+  fbButton,
+  fbImg,
+  './assets/icons/fb/fb_initial.svg',
+  './assets/icons/fb/fb_hover.svg',
+);
+
+hoverChangeIcon(
+  tiktokButton,
+  tiktokImg,
+  './assets/icons/tiktok/tiktok_initial.svg',
+  './assets/icons/tiktok/tiktok_hover.svg',
+);
 
 // Get Whatsapp Button, & whatsappImg
 whatsappButton.addEventListener('mouseover', (_) => {
@@ -111,7 +120,6 @@ exploreMoreBtn.addEventListener('mouseout', (_) => {
   exploreMoreIcon.src = './assets/icons/arrow_right.svg';
 });
 
-
 var servicesContent = document.getElementsByClassName('service-content');
 
 // Default serviceContent
@@ -123,6 +131,17 @@ var selectedPrevServiceContent = -1;
 // 2 -> left
 const animationStretchBehaviour = { 0: "Fiat", 1: "500", 2: "white" };
 
+const servicesTextList = [
+  `We offer expert PPF installation, premium car wraps, and custom designs to enhance and protect your
+          vehicle's style.
+          Transform your ride with our top-notch services!`,
+  `PPF installation protects against scratches and UV damage, keeping your car looking new while simplifying
+              maintenance!`,
+  `Car wraps provide a cost-effective way to change your vehicle's appearance without a permanent paint job,
+  allowing for creative designs and colours.They also protect the original paint from scratches and UV
+damage!`,
+  ``,
+];
 
 showCurrentServiceContentEffect(selectedServiceContent);
 
@@ -139,29 +158,38 @@ for (let i = 0; i < servicesContent.length; i++) {
 }
 
 function showCurrentServiceContentEffect(currentIndex) {
-  servicesContent[currentIndex].classList.remove('grow');
-  servicesContent[currentIndex].classList.add('grow-[1.5]');
+  var textContent = servicesContent[currentIndex].children[1];
+  var textDisplay = textContent.children[1];
+  textDisplay.textContent = servicesTextList[currentIndex];
+  textDisplay.classList.remove('opacity-0');
+  textDisplay.classList.add('opacity-100');
 
   var blackBg = servicesContent[currentIndex].children[0];
   blackBg.classList.remove('bg-opacity-20');
   blackBg.classList.add('bg-opacity-30');
 
-  var textContent = servicesContent[currentIndex].children[1];
-  var textDisplay = textContent.children[1];
-  textDisplay.classList.remove('opacity-0');
-  textDisplay.classList.add('opacity-100');
+  servicesContent[currentIndex].classList.remove('grow');
+  servicesContent[currentIndex].classList.add('grow-[1.5]');
 
   if (selectedPrevServiceContent != -1) {
-    servicesContent[selectedPrevServiceContent].classList.remove('grow-[1.5]');
-    servicesContent[selectedPrevServiceContent].classList.add('grow');
+    var textContentPrev = servicesContent[selectedPrevServiceContent].children[1];
+    var textDisplayPrev = textContentPrev.children[1];
+    textDisplayPrev.textContent = '';
+    textDisplayPrev.classList.remove('opacity-100');
+    textDisplayPrev.classList.add('opacity-0');
 
     var blackBgPrev = servicesContent[selectedPrevServiceContent].children[0];
     blackBgPrev.classList.remove('bg-opacity-30');
     blackBgPrev.classList.add('bg-opacity-20');
 
-    var textContentPrev = servicesContent[selectedPrevServiceContent].children[1];
-    var textDisplayPrev = textContentPrev.children[1];
-    textDisplayPrev.classList.remove('opacity-100');
-    textDisplayPrev.classList.add('opacity-0');
+    servicesContent[selectedPrevServiceContent].classList.remove('grow-[1.5]');
+    servicesContent[selectedPrevServiceContent].classList.add('grow');
   }
 }
+
+// Copyright © 2025 Auto Wrap Studio Sdn. Bhd. (business no.)
+var copyrightText = document.getElementById('copyright-text');
+// full year
+const d = new Date();
+let year = d.getFullYear();
+copyrightText.innerText = `Copyright © ${year} Auto Wrap Studio Sdn. Bhd. (business no.)`
