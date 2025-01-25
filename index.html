@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./styles/input.css" />
-  <link rel="stylesheet" href="./styles/output.css" />
+  <link href="./styles/output.css" rel="stylesheet">
+  <link href="./styles/input.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -79,26 +79,27 @@
   </header>
 
   <!-- TODO: (P) FIX UP THIS & add on animation for this-->
+  <!-- TODO: remove h-svh look into other screen -->
   <div class="h-svh flex flex-col">
     <!-- Carousel Photos -->
     <section class="carousel-slider w-full overflow-hidden">
       <!-- <img class="h-full w-full object-fill" src="assets/dummy/carousel_1.png" alt="dummy image" /> -->
       <img class="h-full w-full object-fill" src="assets/dummy/carousel_test1.png" alt="dummy image" />
-      <a class="prev text-6xl text-white absolute top-1/2 ml-3 cursor-pointer select-none"
+      <a class="h-full text-6xl text-white absolute top-1/2 ml-3 cursor-pointer select-none bg-black"
         onclick="plusSlides(-1)">❮</a>
-      <a class="next text-6xl text-white absolute top-1/2 mr-3 cursor-pointer select-none right-0"
+      <a class="text-6xl text-white absolute top-1/2 mr-3 cursor-pointer select-none right-0"
         onclick="plusSlides(1)">❯</a>
       <div class="absolute bottom-3 flex gap-12 w-full justify-center items-end">
         <span class="h-1.5 w-40 bg-aws-yellow" onclick="currentSlide(1)"></span>
         <span class="h-1 w-40	bg-white" onclick="currentSlide(2)"></span>
         <span class="h-1 w-40	bg-white" onclick="currentSlide(3)"></span>
+        <span class="h-1 w-40	bg-white" onclick="currentSlide(4)"></span>
       </div>
     </section>
   </div>
 
   <main class="w-full">
     <!-- Services -->
-    <!-- TODO: (P) apply animation when hover, animate it -->
     <section>
       <div class="max-w-fit mx-auto flex flex-col items-center">
         <img class="w-8 h-8 " src="./assets/icons/work_tool.svg" alt="Services">
@@ -116,12 +117,13 @@
       <div class="my-4 flex gap-3 min-h-80 px-12">
         <!-- PPF Installation -->
         <div
-          class="service-content grow basis-0 shadow-lg relative rounded-2xl overflow-hidden bg-no-repeat bg-center bg-cover"
+          class="service-content grow basis-0 shadow-lg relative rounded-2xl overflow-hidden bg-no-repeat bg-center bg-cover transition-all duration-100"
           style="background-image: url(assets/dummy/services1.png);">
-          <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-          <div class="display-text absolute top-[7.5%] left-5">
-            <p class="text-white text-[42px] font-bebasnue">PPF Installation</p>
-            <p class="display-subtitle text-white text-left font-pixelify text-sm opacity-0 transition-opacity">
+          <div class="absolute inset-0 bg-black bg-opacity-20 transition duration-300"></div>
+          <div class="absolute top-[7.5%] left-5 text-white">
+            <p class="inline-block text-[42px] font-bebasnue">
+              PPF Installation</p>
+            <p class="inline-block mt-3 text-center font-pixelify text-sm opacity-0 transition-opacity">
               PPF installation protects against scratches and UV damage, keeping your car looking new while simplifying
               maintenance.!
             </p>
@@ -130,12 +132,12 @@
 
         <!-- Car Wrap -->
         <div
-          class="service-content grow basis-0 shadow-lg relative rounded-2xl overflow-hidden bg-no-repeat bg-center bg-cover"
+          class="service-content grow basis-0 shadow-lg relative rounded-2xl overflow-hidden bg-no-repeat bg-center bg-cover transition-all duration-100"
           style="background-image: url(assets/dummy/services2.png);">
-          <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-          <div class="absolute top-[7.5%] left-5">
-            <p class="text-white text-[42px] font-bebasnue">Car Wrap</p>
-            <p class="display-subtitle text-white text-left font-pixelify text-sm opacity-0 transition-opacity">
+          <div class="absolute inset-0 bg-black bg-opacity-20 transition duration-300"></div>
+          <div class="absolute top-[7.5%] left-5 text-white">
+            <p class="inline-block text-[42px] font-bebasnue">Car Wrap</p>
+            <p class="inline-block mt-3 text-center font-pixelify text-sm opacity-0 transition-opacity">
               Car wraps provide a cost-effective way to change your vehicle's appearance without a permanent paint job,
               allowing for creative designs and colours. They also protect the original paint from scratches and UV
               damage.!
@@ -145,13 +147,13 @@
 
         <!-- Custom Wrap Design -->
         <div
-          class="service-content grow basis-0 shadow-lg relative rounded-2xl overflow-hidden bg-no-repeat bg-center bg-cover"
+          class="service-content grow basis-0 shadow-lg relative rounded-2xl overflow-hidden bg-no-repeat bg-center bg-cover transition-all duration-100"
           style="background-image: url(assets/dummy/services3.png);">
-          <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-          <div class="absolute top-[7.5%] left-5">
-            <p class="text-white text-[42px] font-bebasnue leading-tight">Custom Wrap Design</p>
+          <div class="absolute inset-0 bg-black bg-opacity-20 transition duration-300"></div>
+          <div class="absolute top-[7.5%] left-5 text-white">
+            <p class="inline-block text-[42px] font-bebasnue leading-tight">Custom Wrap Design</p>
             <p
-              class="display-subtitle text-white text-left font-pixelify text-sm opacity-0 transition-opacity duration-300 ease-in-out">
+              class="inline-block mt-3 text-center font-pixelify text-sm opacity-0 transition-opacity duration-300 ease-in-out">
               Our custom wrap design service brings your vision to life with unique graphics and colours tailored to
               your
               style. Whether you're looking to make a bold statement or promote your brand, our team collaborates with
@@ -196,7 +198,7 @@
 
     <!-- Visit Us -->
     <section class="overflow-hidden bg-no-repeat bg-top" style="background-image: url(assets/dummy/visit_us.png);">
-      <!-- TODO: remove mb-72 -->
+      <!-- TODO: see if needed to remove mb-52 -->
       <div class="mt-20 mb-52 max-w-fit mx-auto flex flex-col items-center">
         <img class="w-8 h-8" src="./assets/icons/map_pin.svg" alt="Visit Us">
         <p class="mt-3 font-bold text-7xl font-work-sans inline-block relative text-visit-us-title">

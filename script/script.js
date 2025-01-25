@@ -142,6 +142,18 @@ const servicesTextList = [
 damage!`,
   ``,
 ];
+// transition-all duration-700
+const servicesHoverTransition = Object.freeze({
+  textOpacityHover: 'opacity-100',
+  textDisplaysTranslate: 'translate-x-[50%]',
+  textDisplaysMargin: 'mx-6',
+  textChildrenTranslate: 'translate-x-[-50%]',
+  textTitleScaleHover: 'scale-125',
+  bgOpacityHover: 'bg-opacity-50',
+  sizeHover: 'grow-[1.5]',
+});
+// translate-x-[50%]
+// TODO: (P) change remove and add class to toggle, just code init state in html
 
 showCurrentServiceContentEffect(selectedServiceContent);
 
@@ -157,33 +169,52 @@ for (let i = 0; i < servicesContent.length; i++) {
   });
 }
 
+// #(onHover)
+// grow 1 -> 1.5, 
+// text opacity 0 -> 100 (non visible to visible), [ADD TRANSITION ANIMATION]
+// bg opacity 20 -> 30 (darker), [ADD OPACITY ANIMATION]
+// NEW: text scale animation, text appear animation
 function showCurrentServiceContentEffect(currentIndex) {
-  var textContent = servicesContent[currentIndex].children[1];
-  var textDisplay = textContent.children[1];
-  textDisplay.textContent = servicesTextList[currentIndex];
-  textDisplay.classList.remove('opacity-0');
-  textDisplay.classList.add('opacity-100');
-
   var blackBg = servicesContent[currentIndex].children[0];
-  blackBg.classList.remove('bg-opacity-20');
-  blackBg.classList.add('bg-opacity-30');
+  var textDisplays = servicesContent[currentIndex].children[1];
 
-  servicesContent[currentIndex].classList.remove('grow');
-  servicesContent[currentIndex].classList.add('grow-[1.5]');
+  textDisplays.classList.toggle(servicesHoverTransition.textDisplaysTranslate);
+  textDisplays.classList.toggle(servicesHoverTransition.textDisplaysMargin);
+
+  blackBg.classList.toggle(servicesHoverTransition.bgOpacityHover);
+
+  var textTitle = textDisplays.children[0];
+  var textSubtitle = textDisplays.children[1];
+
+  textTitle.classList.toggle(servicesHoverTransition.textChildrenTranslate);
+  textTitle.classList.toggle(servicesHoverTransition.textTitleScaleHover);
+
+  textSubtitle.textContent = servicesTextList[currentIndex];
+  textSubtitle.classList.toggle(servicesHoverTransition.textChildrenTranslate);
+  textSubtitle.classList.toggle(servicesHoverTransition.textOpacityHover);
+
+  servicesContent[currentIndex].classList.toggle(servicesHoverTransition.sizeHover);
 
   if (selectedPrevServiceContent != -1) {
-    var textContentPrev = servicesContent[selectedPrevServiceContent].children[1];
-    var textDisplayPrev = textContentPrev.children[1];
-    textDisplayPrev.textContent = '';
-    textDisplayPrev.classList.remove('opacity-100');
-    textDisplayPrev.classList.add('opacity-0');
-
     var blackBgPrev = servicesContent[selectedPrevServiceContent].children[0];
-    blackBgPrev.classList.remove('bg-opacity-30');
-    blackBgPrev.classList.add('bg-opacity-20');
+    var textDisplaysPrev = servicesContent[selectedPrevServiceContent].children[1];
 
-    servicesContent[selectedPrevServiceContent].classList.remove('grow-[1.5]');
-    servicesContent[selectedPrevServiceContent].classList.add('grow');
+    textDisplaysPrev.classList.toggle(servicesHoverTransition.textDisplaysTranslate);
+    textDisplaysPrev.classList.toggle(servicesHoverTransition.textDisplaysMargin);
+
+    blackBgPrev.classList.toggle(servicesHoverTransition.bgOpacityHover);
+
+    var textTitlePrev = textDisplaysPrev.children[0];
+    var textSubtitlePrev = textDisplaysPrev.children[1];
+
+    textTitlePrev.classList.toggle(servicesHoverTransition.textChildrenTranslate);
+    textTitlePrev.classList.toggle(servicesHoverTransition.textTitleScaleHover);
+
+    textSubtitlePrev.textContent = '';
+    textSubtitlePrev.classList.toggle(servicesHoverTransition.textChildrenTranslate);
+    textSubtitlePrev.classList.toggle(servicesHoverTransition.textOpacityHover);
+
+    servicesContent[selectedPrevServiceContent].classList.toggle(servicesHoverTransition.sizeHover);
   }
 }
 

@@ -13,7 +13,7 @@ module.exports = {
         'border-main': '#D9D9D9',
         'aws-yellow': '#F3E307',
         'our-work-bg-color': '#FFF7F1',
-        'our-work-title-color':'#604100',
+        'our-work-title-color': '#604100',
         'visit-us-title': '#3E3E3E',
       },
       translate: {
