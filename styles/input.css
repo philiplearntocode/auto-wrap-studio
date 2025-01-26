@@ -1,7 +1,54 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* @layer components {
   .service-card {
     @apply flex-1 flex justify-center items-center rounded-md shadow-lg hover:shadow-2xl;
   }
 } */
+
+@source './*.css';
+
+/* https://tailwindcss.com/docs/theme#theme-variable-namespaces */
+
+@theme {
+  --color-main-color: #f0f0f0;
+  --color-border-main: #d9d9d9;
+  --color-aws-yellow: #f3e307;
+  --color-our-work-bg-color: #fff7f1;
+  --color-our-work-title-color: #604100;
+  --color-visit-us-title: #3e3e3e;
+
+  --translate-center: -50%, -50%;
+
+  --font-oxanium: Oxanium, sans-serif;
+  --font-work-sans: 'Work Sans', sans-serif;
+  --font-strait: Strait, sans-serif;
+  --font-robotomono: 'Roboto Mono', sans-serif;
+  --font-pixelify: 'Pixelify Sans', sans-serif;
+  --font-bebasnue: 'Bebas Neue', sans-serif;
+  --font-inter: Inter, sans-serif;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  button,
+  [role='button'] {
+    cursor: pointer;
+  }
+}

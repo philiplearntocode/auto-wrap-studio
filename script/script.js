@@ -120,16 +120,36 @@ exploreMoreBtn.addEventListener('mouseout', (_) => {
   exploreMoreIcon.src = './assets/icons/arrow_right.svg';
 });
 
+
+////////////////////
+/// CAROUSEL HERE
+////////////////////
+
+// TODO: generate navigate indicator at bottom
+// TODO: onTap navigate indicator to which index of image
+// TODO: plusSlides function
+
+const carouselImgList = [
+  './assets/dummy/carousel_1.png',
+  './assets/dummy/carousel_2.png',
+  './assets/dummy/carousel_3.png',
+  './assets/dummy/carousel_4.png',
+];
+
+const carouselIndex = 0;
+
+// get current index then update the div.
+function plusSlides(calculation) {
+
+}
+
+
+
 var servicesContent = document.getElementsByClassName('service-content');
 
 // Default serviceContent
 var selectedServiceContent = 1;
 var selectedPrevServiceContent = -1;
-
-// 0 -> right
-// 1 -> left & right
-// 2 -> left
-const animationStretchBehaviour = { 0: "Fiat", 1: "500", 2: "white" };
 
 const servicesTextList = [
   `We offer expert PPF installation, premium car wraps, and custom designs to enhance and protect your
@@ -149,11 +169,9 @@ const servicesHoverTransition = Object.freeze({
   textDisplaysMargin: 'mx-6',
   textChildrenTranslate: 'translate-x-[-50%]',
   textTitleScaleHover: 'scale-125',
-  bgOpacityHover: 'bg-opacity-50',
+  bgOpacityHover: 'bg-black/50',
   sizeHover: 'grow-[1.5]',
 });
-// translate-x-[50%]
-// TODO: (P) change remove and add class to toggle, just code init state in html
 
 showCurrentServiceContentEffect(selectedServiceContent);
 
