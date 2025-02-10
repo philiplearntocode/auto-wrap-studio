@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./styles/output.css" rel="stylesheet">
-  <link href="./styles/input.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -18,7 +17,7 @@
 </head>
 
 <body class="bg-main-color">
-  <header class="z-50	px-10 py-3 sticky top-0 bg-white">
+  <header id="header-bar" class="z-50	px-10 py-3 sticky top-0 bg-white">
     <nav class="flex place-items-center">
       <!-- Auto Wrap Studio Logo -->
       <div class="flex-1">
@@ -78,40 +77,22 @@
     </nav>
   </header>
 
-  <!-- TODO: (P) FIX UP THIS & add on animation for this-->
   <!-- TODO: remove h-svh look into other screen -->
-  <div class="h-svh flex flex-col">
-    <!-- Carousel Photos -->
-    <section class="carousel-slider w-full overflow-hidden relative">
-      <!-- TODO: continue here -->
-      <div class="h-full w-full flex overflow-x-hidden aspect-16/9 snap-x scroll-smooth flex">
-        <img id="carousel-1" class="flex-1 snap-start object-fill" src="./assets/dummy/carousel_test1.png"
-          alt="dummy image" />
-        <img id="carousel-2" class="flex-1 snap-start object-fill" src="./assets/dummy/carousel_test1.png"
-          alt="dummy image" />
-        <img id="carousel-3" class="flex-1 snap-start object-fill" src="./assets/dummy/carousel_test1.png"
-          alt="dummy image" />
-        <img id="carousel-4" class="flex-1 snap-start object-fill" src="./assets/dummy/carousel_test1.png"
-          alt="dummy image" />
-        <div
-          class="bg-linear-to-r from-black/60 to-black/0 z-10 absolute top-0 bottom-0 px-4 flex justify-center flex-col cursor-pointer">
-          <a class="text-6xl text-white select-none" onclick="plusSlides(-1)">❮</a>
-        </div>
-        <div
-          class="bg-linear-to-r from-black/0 to-black/60 z-10 absolute top-0 bottom-0 right-0 px-4 flex justify-center flex-col cursor-pointer">
-          <a class="text-6xl text-white select-none" onclick="plusSlides(1)">❯</a>
-        </div>
-      </div>
-      <div class="absolute bottom-3 flex gap-12 w-full justify-center items-end">
-        <span class="h-1.5 w-40 bg-aws-yellow" onclick="currentSlide(1)"></span>
-        <span class="h-1 w-40	bg-white" onclick="currentSlide(2)"></span>
-        <span class="h-1 w-40	bg-white" onclick="currentSlide(3)"></span>
-        <span class="h-1 w-40	bg-white" onclick="currentSlide(4)"></span>
-      </div>
-    </section>
-  </div>
+  <!-- Carousel Photos -->
+  <section id="carousel-slider" class="overflow-hidden w-full max-w-[1600px] relative mr-auto ml-auto">
+    <div id="slider-container" class="absolute h-full w-full flex transition-all duration-1000"></div>
+    <div id="prev-btn"
+      class="bg-linear-to-r from-black/60 to-black/0 z-10 absolute top-0 bottom-0 px-4 flex justify-center flex-col cursor-pointer">
+      <a class="text-6xl text-white select-none">❮</a>
+    </div>
+    <div id="next-btn"
+      class="bg-linear-to-r from-black/0 to-black/60 z-10 absolute top-0 bottom-0 right-0 px-4 flex justify-center flex-col cursor-pointer">
+      <a class="text-6xl text-white select-none">❯</a>
+    </div>
+    <div id="dot-container" class="absolute bottom-4 flex gap-12 w-full justify-center items-end"></div>
+  </section>
 
-  <main class="w-full">
+  <main class="w-full mt-10">
     <!-- Services -->
     <section>
       <div class="max-w-fit mx-auto flex flex-col items-center">
@@ -258,7 +239,7 @@
     </section>
   </main>
 
-  <footer class="bg-aws-yellow/60 px-10 py-6 flex flex-col gap-4">
+  <footer class="bg-aws-yellow/70 px-10 py-6 flex flex-col gap-4">
     <img class="rounded-lg w-[155px]" src="./assets/auto_wrap_studio_logo.png" alt="dummy image" />
     <div class="w-full h-[1px] border-none bg-black/30"></div>
     <div class="flex font-work-sans text-sm my-1 justify-between mr-3">

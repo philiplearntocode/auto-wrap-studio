@@ -1,10 +1,9 @@
-
-var header = document.getElementsByTagName('header')[0];
+var headerBar = document.getElementById('header-bar');
 window.addEventListener('scroll', (e) => {
   if (window.scrollY > 0) {
-    header.classList.add('shadow-2xl');
+    headerBar.classList.add('shadow-2xl');
   } else {
-    header.classList.remove('shadow-2xl');
+    headerBar.classList.remove('shadow-2xl');
   }
 });
 
@@ -124,26 +123,105 @@ exploreMoreBtn.addEventListener('mouseout', (_) => {
 ////////////////////
 /// CAROUSEL HERE
 ////////////////////
+var carouselSlider = document.getElementById('carousel-slider');
+var newHeight = window.innerHeight - headerBar.clientHeight;
+carouselSlider.style.height = newHeight + 'px';
 
-// TODO: generate navigate indicator at bottom
-// TODO: onTap navigate indicator to which index of image
-// TODO: plusSlides function
+var sliderContainer = document.getElementById('slider-container');
+var dotContainer = document.getElementById('dot-container');
 
 const carouselImgList = [
-  './assets/dummy/carousel_1.png',
-  './assets/dummy/carousel_2.png',
-  './assets/dummy/carousel_3.png',
-  './assets/dummy/carousel_4.png',
+  './assets/dummy/carousel_test2.png',
+  './assets/dummy/carousel_test1.png',
+  './assets/dummy/carousel_test2.png',
+  './assets/dummy/carousel_test1.png',
 ];
 
-const carouselIndex = 0;
+var carouselDisplayIndex = 0;
 
-// get current index then update the div.
-function plusSlides(calculation) {
+const dotActiveClass = Object.freeze({
+  activeDotColor: 'bg-aws-yellow',
+  activeDotHeight: 'h-1.5',
+  inactiveDotColor: 'bg-white',
+  inactiveDotHeight: 'h-1',
+});
 
+var maxHeight = 0;
+
+for (let i = 0; i < carouselImgList.length; i++) {
+  var imgChild = document.createElement("img");
+  imgChild.id = `carousel-${i + 1}`;
+  imgChild.classList.add('flex-1', 'snap-start', 'object-cover', 'h-full', 'w-full');
+  imgChild.src = carouselImgList[i];
+  sliderContainer.appendChild(imgChild);
+
+  var dotChild = document.createElement("span");
+  dotChild.classList.add('w-40', 'transition-all', 'duration-300', 'ease-in-out', 'cursor-pointer');
+
+  if (carouselDisplayIndex == i) {
+    dotChild.classList.add(dotActiveClass.activeDotColor, dotActiveClass.activeDotHeight);
+  } else {
+    dotChild.classList.add(dotActiveClass.inactiveDotColor, dotActiveClass.inactiveDotHeight);
+  }
+
+  dotContainer.appendChild(dotChild);
 }
 
+var prevBtn = document.getElementById('prev-btn');
+var nextBtn = document.getElementById('next-btn');
 
+prevBtn.addEventListener('click', (_) => {
+  goPrevious();
+});
+nextBtn.addEventListener('click', (_) => {
+  goNext();
+});
+
+function goPrevious() {
+  if (carouselDisplayIndex == 0) {
+    carouselDisplayIndex = carouselImgList.length - 1;
+  } else {
+    carouselDisplayIndex -= 1;
+  }
+  reloadSlider();
+}
+
+function goNext() {
+  if (carouselDisplayIndex + 1 > carouselImgList.length - 1) {
+    carouselDisplayIndex = 0;
+  } else {
+    carouselDisplayIndex += 1;
+  }
+  reloadSlider();
+}
+
+function reloadSlider() {
+  let checkLeft = sliderContainer.children[carouselDisplayIndex];
+  if (checkLeft instanceof HTMLElement) {
+    let offset = checkLeft.offsetLeft;
+    sliderContainer.style.transform = 'translateX(' + (-offset) + 'px)';
+  }
+
+  let oldActiveDot = dotContainer.querySelector(`.${dotActiveClass.activeDotColor}`);
+  oldActiveDot.classList.remove(dotActiveClass.activeDotColor, dotActiveClass.activeDotHeight);
+  oldActiveDot.classList.add(dotActiveClass.inactiveDotColor, dotActiveClass.inactiveDotHeight)
+
+  let newActiveDot = dotContainer.children[carouselDisplayIndex];
+  newActiveDot.classList.remove(dotActiveClass.inactiveDotColor, dotActiveClass.inactiveDotHeight);
+  newActiveDot.classList.add(dotActiveClass.activeDotColor, dotActiveClass.activeDotHeight);
+}
+
+for (let i = 0; i < dotContainer.children.length; i++) {
+  dotContainer.children[i].addEventListener('click', (_) => {
+    if (carouselDisplayIndex == i) return;
+    carouselDisplayIndex = i;
+    reloadSlider();
+  });
+}
+
+window.addEventListener('resize', () => {
+  reloadSlider();
+});
 
 var servicesContent = document.getElementsByClassName('service-content');
 
@@ -240,5 +318,5 @@ function showCurrentServiceContentEffect(currentIndex) {
 var copyrightText = document.getElementById('copyright-text');
 // full year
 const d = new Date();
-let year = d.getFullYear();
+var year = d.getFullYear();
 copyrightText.innerText = `Copyright © ${year} Auto Wrap Studio Sdn. Bhd. (business no.)`
